@@ -4,11 +4,16 @@ const express = require("express");
 const app = express();
 // create a variable for port
 const port = 3000;
+// import anonymousn function
+const lesson1Controller = require("./controllers/lesson1");
 
-app.get("/", (req, res) => {
-  res.send("Ezequiel Rindello");
-});
+// get: if you get an HTTP request at "/" ----> run the code
+app.get("/", lesson1Controller.ezeRoute);
 
+// get: if you get an HTTP request at "/admin" ----> run the code
+app.get("/admin", lesson1Controller.adminRoute);
+
+// listen:
 app.listen(process.env.PORT || port, () => {
   console.log("Web Server is listening at port " + (process.env.PORT || port));
 });
